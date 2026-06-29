@@ -1,0 +1,39 @@
+cff-version: 1.2.0
+title: "FAEAP: A Multi-Task Deep Learning Platform for Forensic Audio Evidence Authentication"
+message: "If you use this software, please cite it as below."
+authors:
+  - family-names: "Your"
+    given-names: "Name"
+    orcid: "https://orcid.org/0000-0000-0000-0000"
+  - family-names: "Co-author"
+    given-names: "Name"
+    orcid: "https://orcid.org/0000-0000-0000-0000"
+version: 0.1.0
+doi: 10.5281/zenodo.XXXXXXX
+date-released: 2024-01-XX
+url: "https://github.com/yourusername/FAEAP"
+repository-code: "https://github.com/yourusername/FAEAP"
+license: MIT
+keywords:
+  - "audio forensics"
+  - "deep learning"
+  - "multi-task learning"
+  - "audio authentication"
+  - "audio deepfake detection"
+  - "forensic audio"
+  - "AudioMAE"
+  - "machine learning"
+  - "artificial intelligence"
+references:
+  - type: article
+    authors:
+      - family-names: "Your"
+        given-names: "Name"
+    title: "FAEAP: A Multi-Task Deep Learning Platform for Forensic Audio Evidence Authentication"
+    journal: "IEEE Access"
+    year: 2024
+    volume: 12
+    issue: 1
+    pages: "1-15"
+    doi: 10.1109/ACCESS.2024.XXXXXXX
+    url: "https://ieeexplore.ieee.org/document/XXXXXXX"

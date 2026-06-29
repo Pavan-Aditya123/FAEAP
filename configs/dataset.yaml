@@ -1,0 +1,98 @@
+# Dataset Configuration
+dataset:
+  name: "FAEAD"
+  version: "1.0.0"
+  description: "Forensic Audio Evidence Authentication Dataset"
+
+# Data Sources
+sources:
+  authentic:
+    - name: "AudioSet"
+      url: "https://research.google.com/audioset/"
+      license: "CC BY 4.0"
+    - name: "FSD50K"
+      url: "https://annotator.freesound.org/fsd50k/"
+      license: "CC BY 4.0"
+    - name: "ESC-50"
+      url: "https://github.com/karolpiczak/ESC-50"
+      license: "CC BY 4.0"
+    - name: "Custom Recordings"
+      description: "Forensic audio archives and custom recordings"
+      license: "Proprietary"
+
+# Dataset Splits
+splits:
+  train: 0.7
+  val: 0.15
+  test: 0.15
+  stratify: true  # Stratify by manipulation type
+
+# Audio Configuration
+audio:
+  sample_rate: 16000
+  bit_depth: 16
+  channels: 1  # Mono
+  format: "wav"
+
+# Manipulation Types
+manipulations:
+  - name: "ai_generated_gunshot"
+    generator: "AudioLDM"
+    count: 500
+  - name: "ai_generated_scream"
+    generator: "AudioLDM"
+    count: 500
+  - name: "ai_generated_explosion"
+    generator: "AudioLDM"
+    count: 500
+  - name: "ai_generated_crash"
+    generator: "AudioLDM"
+    count: 500
+  - name: "ai_generated_glass_breaking"
+    generator: "AudioLDM"
+    count: 500
+  - name: "ai_generated_crowd"
+    generator: "AudioLDM"
+    count: 500
+  - name: "ai_generated_animal"
+    generator: "AudioLDM"
+    count: 500
+  - name: "splice"
+    generator: "Custom"
+    count: 500
+  - name: "voice_synthesis"
+    generator: "VALL-E"
+    count: 500
+  - name: "voice_conversion"
+    generator: "RVC"
+    count: 500
+
+# Annotation Configuration
+annotation:
+  format: "json"
+  include_frame_level: true
+  include_temporal_boundaries: true
+  include_manipulation_type: true
+  include_confidence: true
+
+# Quality Control
+quality_control:
+  min_snr: 10  # dB
+  max_clipping_ratio: 0.01
+  min_duration: 1  # seconds
+  max_duration: 300  # seconds
+  inter_annotator_agreement_threshold: 0.8
+
+# Metadata Fields
+metadata:
+  - "source"
+  - "recording_device"
+  - "acoustic_environment"
+  - "sample_rate"
+  - "bit_depth"
+  - "duration"
+  - "manipulation_type"
+  - "manipulation_method"
+  - "manipulation_parameters"
+  - "quality_metrics"
+  - "timestamp"

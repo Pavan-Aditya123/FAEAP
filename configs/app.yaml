@@ -1,0 +1,73 @@
+# Application Configuration
+app:
+  name: "FAEAP"
+  version: "0.1.0"
+  environment: "development"  # development, staging, production
+  debug: true
+
+# Server Configuration
+server:
+  host: "0.0.0.0"
+  port: 8000
+  workers: 4
+  reload: true
+
+# CORS Configuration
+cors:
+  allow_origins:
+    - "http://localhost:3000"
+    - "http://localhost:8000"
+  allow_credentials: true
+  allow_methods:
+    - "*"
+  allow_headers:
+    - "*"
+
+# Security Configuration
+security:
+  secret_key: "${SECRET_KEY:your-secret-key-change-in-production}"
+  algorithm: "HS256"
+  access_token_expire_minutes: 30
+  refresh_token_expire_days: 7
+
+# File Upload Configuration
+upload:
+  max_file_size: 524288000  # 500MB in bytes
+  allowed_formats:
+    - "wav"
+    - "mp3"
+    - "flac"
+    - "aac"
+    - "ogg"
+  max_duration: 3600  # 60 minutes in seconds
+
+# Database Configuration
+database:
+  url: "${DATABASE_URL:postgresql://user:password@localhost:5432/faeap}"
+  pool_size: 10
+  max_overflow: 20
+  pool_pre_ping: true
+
+# Redis Configuration
+redis:
+  url: "${REDIS_URL:redis://localhost:6379/0}"
+  max_connections: 20
+  socket_timeout: 5
+
+# MinIO Configuration
+minio:
+  endpoint: "${MINIO_ENDPOINT:localhost:9000}"
+  access_key: "${MINIO_ACCESS_KEY:minioadmin}"
+  secret_key: "${MINIO_SECRET_KEY:minioadmin}"
+  secure: false
+  bucket_name: "faeap"
+
+# Logging Configuration
+logging:
+  level: "INFO"  # DEBUG, INFO, WARNING, ERROR, CRITICAL
+  format: "json"
+  file:
+    enabled: true
+    path: "logs/backend/app.log"
+    max_bytes: 10485760  # 10MB
+    backup_count: 5

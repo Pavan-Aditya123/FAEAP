@@ -1,0 +1,59 @@
+# Model Configuration
+model:
+  name: "AudioMAE"
+  variant: "base"
+  pretrained: true
+  checkpoint_path: "ai/weights/audiomae_base.pth"
+
+# Backbone Configuration
+backbone:
+  name: "AudioMAE"
+  patch_size: 16
+  embed_dim: 768
+  depth: 12
+  num_heads: 12
+  mlp_ratio: 4.0
+  drop_rate: 0.0
+  attn_drop_rate: 0.0
+  drop_path_rate: 0.1
+
+# Task Heads Configuration
+heads:
+  detection:
+    type: "classification"
+    num_classes: 2  # authentic, manipulated
+    hidden_dim: 512
+    dropout: 0.1
+
+  localization:
+    type: "temporal_segmentation"
+    num_segments: 100  # For 10-second audio, 100ms resolution
+    hidden_dim: 512
+    dropout: 0.1
+
+  classification:
+    type: "classification"
+    num_classes: 10  # 10 manipulation types
+    hidden_dim: 512
+    dropout: 0.1
+
+  restoration:
+    type: "waveform_reconstruction"
+    hidden_dim: 512
+    dropout: 0.1
+
+# Multi-Task Learning Configuration
+multi_task:
+  loss_weights:
+    detection: 1.0
+    localization: 1.0
+    classification: 1.0
+    restoration: 0.5
+  gradient_clipping: 1.0
+  task_sampling: "round_robin"  # round_robin, random, weighted
+
+# Explainability Configuration
+explainability:
+  method: "attention"  # attention, gradcam, integrated_gradients
+  save_attention_maps: true
+  save_gradcam: true

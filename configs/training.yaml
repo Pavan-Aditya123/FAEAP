@@ -1,0 +1,92 @@
+# Training Configuration
+training:
+  seed: 42
+  num_epochs: 100
+  batch_size: 32
+  gradient_accumulation_steps: 1
+  mixed_precision: true  # Use AMP for faster training
+
+# Optimizer Configuration
+optimizer:
+  name: "AdamW"
+  lr: 1e-4
+  weight_decay: 0.01
+  betas: [0.9, 0.999]
+  eps: 1e-8
+
+# Learning Rate Scheduler Configuration
+scheduler:
+  name: "CosineAnnealingWarmRestarts"
+  T_0: 10
+  T_mult: 2
+  eta_min: 1e-6
+
+# Data Augmentation
+augmentation:
+  enabled: true
+  techniques:
+    - name: "time_stretch"
+      rate: [0.8, 1.2]
+    - name: "pitch_shift"
+      n_steps: [-2, 2]
+    - name: "add_noise"
+      snr: [10, 30]
+    - name: "time_mask"
+      max_mask: 10
+    - name: "freq_mask"
+      max_mask: 10
+
+# Checkpoint Configuration
+checkpoint:
+  save_dir: "checkpoints"
+  save_frequency: 5  # Save every N epochs
+  save_best: true
+  monitor: "val_loss"
+  mode: "min"
+  max_keep: 3  # Keep only top 3 checkpoints
+
+# Early Stopping
+early_stopping:
+  enabled: true
+  monitor: "val_loss"
+  patience: 10
+  mode: "min"
+  min_delta: 0.001
+
+# Logging Configuration
+logging:
+  log_dir: "logs/training"
+  log_frequency: 100  # Log every N steps
+  tensorboard: true
+  wandb: false
+
+# Evaluation Configuration
+evaluation:
+  frequency: 1  # Evaluate every N epochs
+  metrics:
+    detection:
+      - "accuracy"
+      - "precision"
+      - "recall"
+      - "f1"
+      - "roc_auc"
+      - "eer"
+    localization:
+      - "mae"
+      - "iou"
+      - "precision"
+      - "recall"
+    classification:
+      - "accuracy"
+      - "per_class_f1"
+      - "confusion_matrix"
+    restoration:
+      - "snr"
+      - "pesq"
+      - "stoi"
+
+# Hardware Configuration
+hardware:
+  device: "cuda"  # cuda, cpu
+  num_workers: 4
+  pin_memory: true

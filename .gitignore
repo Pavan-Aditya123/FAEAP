@@ -1,0 +1,118 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+venv/
+env/
+ENV/
+.venv
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb
+
+# PyTorch
+*.pth
+*.pt
+*.ckpt
+
+# Data
+datasets/raw/*
+datasets/generated/*
+datasets/manipulated/*
+!datasets/raw/.gitkeep
+!datasets/generated/.gitkeep
+!datasets/manipulated/.gitkeep
+
+# Models
+models/*
+!models/.gitkeep
+
+# Audio files
+*.wav
+*.mp3
+*.flac
+*.aac
+*.ogg
+
+# Large files
+*.zip
+*.tar.gz
+*.rar
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Next.js
+.next/
+out/
+build/
+
+# Coverage
+coverage/
+*.coverage
+htmlcov/
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Reports (keep structure, ignore large generated files)
+reports/figures/*.png
+reports/figures/*.pdf
+reports/tables/*.csv
+reports/tables/*.xlsx
+reports/evaluation/*.json
+reports/paper/*.pdf
+!reports/figures/.gitkeep
+!reports/tables/.gitkeep
+!reports/evaluation/.gitkeep
+!reports/paper/.gitkeep
